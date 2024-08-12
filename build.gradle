@@ -30,29 +30,30 @@ test {
     useJUnitPlatform()
 }
 
-//configurations {
-//    cucumberRuntime {
-//        extendsFrom testImplementation
-//    }
-//}
-//
-//tasks.register('web-testing') {
-//    dependsOn assemble, testClasses
-//    doLast {
-//        javaexec {
-//            main = "io.cucumber.core.cli.Main"
-//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-//            args = [
-//                    '--plugin', 'html:reports/test-report-web.html',
-//                    '--plugin', 'json:reports/test-report-web.json',
-//                    '--plugin', 'pretty',
-//                    '--glue', 'WEB/stepDef',
-//                    'src/test/resources/WEB'
-//            ]
-//        }
-//    }
-//}
-//
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+tasks.register('web-testing') {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/test-report-web.html',
+                    '--plugin', 'json:reports/test-report-web.json',
+                    '--plugin', 'pretty',
+                    '--glue', 'WEB/stepDef',
+                    '--tags', '@web',
+                    'src/test/resources/WEB'
+            ]
+        }
+    }
+}
+
 //tasks.register('api-testing') {
 //    dependsOn assemble, testClasses
 //    doLast {
