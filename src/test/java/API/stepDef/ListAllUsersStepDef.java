@@ -23,7 +23,7 @@ public class ListAllUsersStepDef {
 
     @And("the response should contain a list of users")
     public void theResponseShouldContainAListOfUsers() {
-        assertFalse("User list should not be empty", response.jsonPath().getList("").isEmpty());
+        apiPage.validateUserListIsNotEmpty(response);
     }
 
     @And("user have query parameter to filter data by status {string}")
@@ -34,12 +34,10 @@ public class ListAllUsersStepDef {
     @When("user send a GET request to filter users")
     public void userSendAGETRequestToFilterUsers() {
         response = apiPage.filterUserByStatus(status);
-        System.out.println(response.getBody().asString());
     }
 
     @And("the response should only contain users with status {string}")
     public void theResponseShouldOnlyContainUsersWithStatus(String expectedStatus) {
-        List<String> statuses = response.jsonPath().getList("status");
-        assertTrue("All users should have status: " + expectedStatus, statuses.stream().allMatch(status -> status.equals(expectedStatus)));
+        apiPage.validateUsersHaveStatus(response, expectedStatus);
     }
 }

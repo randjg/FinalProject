@@ -6,7 +6,6 @@ import io.restassured.specification.RequestSpecification;
 public class Endpoint {
 
     public static final String HOST_GOREST = "https://gorest.co.in/public/v2/";
-    public static final String GET_LIST_USERS = HOST_GOREST + "users";
 
     public static RequestSpecification setupRequest(){
         return RestAssured.given()

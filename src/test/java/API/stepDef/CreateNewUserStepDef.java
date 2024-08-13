@@ -21,24 +21,18 @@ public class CreateNewUserStepDef {
 
     @Given("the GoREST API is available")
     public void theGoRESTAPIIsAvailable() {
-        response = Endpoint.setupRequest()
-                .get("/users");
-        assertEquals(200, response.getStatusCode());
+        response = apiPage.isAPIAvailable();
     }
 
     @And("the user data is valid")
     public void theUserDataIsValid() {
-        user = new User(
-                "Randy J",
-                "rjg." + generateUniqueNumber() + "@example.com",
-                "male",
-                "active"
-        );
+        user = apiPage.createValidUser();
     }
 
     @When("user send a POST request to the endpoint with the user data")
     public void userSendAPostRequestToTheEndpointWithTheUserData() {
         response = apiPage.createUser(user);
+        System.out.println(response.getBody().asString());
     }
 
     @Then("the response status code should be {int}")
@@ -48,36 +42,16 @@ public class CreateNewUserStepDef {
 
     @And("the user should be created successfully")
     public void theUserShouldBeCreatedSuccessfully() {
-        response.jsonPath().getInt("id");
-
-        assertEquals("Name should match", user.getName(), response.jsonPath().getString("name"));
-        assertEquals("Email should match", user.getEmail(), response.jsonPath().getString("email"));
-        assertEquals("Gender should match", user.getGender(), response.jsonPath().getString("gender"));
-        assertEquals("Status should match", user.getStatus(), response.jsonPath().getString("status"));
-    }
-
-    //to generate random number for unique email
-    private String generateUniqueNumber(){
-        Random random = new Random();
-
-        return String.format("%04d",
-                random.nextInt(10000)
-        );
+        apiPage.validateUserCreation(user, response);
     }
 
     @And("the user data is invalid")
     public void theUserDataIsInvalid() {
-        user = new User(
-                "",
-                "" + generateUniqueNumber() + "@example.com",
-                "",
-                ""
-        );
+        user = apiPage.createInvalidUser();
     }
 
     @And("the response should contain an error message")
     public void theResponseShouldContainAnErrorMessage() {
-        response.jsonPath().getString("message");
-        System.out.println(response.getStatusCode());
+        apiPage.validateErrorMessage(response);
     }
 }
