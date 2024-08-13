@@ -17,8 +17,16 @@ public class ApiPage {
                 .get("/users/" + userID);
     }
 
-    public Response getUserByName(String userName){
-        return Endpoint.setupRequest()
-                .get("/users/" + userName);
+//    public Response getUserByName(String userName){
+//        return Endpoint.setupRequest()
+//                .get("/users/" + userName);
+//    }
+
+    public Response getAllUsers(){
+        return Endpoint.setupRequest().get("/users");
+    }
+
+    public Response filterUserByStatus(String status){
+        return Endpoint.setupRequest().queryParam("status", status).get("/users");
     }
 }
