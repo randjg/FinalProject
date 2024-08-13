@@ -54,19 +54,20 @@ tasks.register('web-testing') {
     }
 }
 
-//tasks.register('api-testing') {
-//    dependsOn assemble, testClasses
-//    doLast {
-//        javaexec {
-//            main = "io.cucumber.core.cli.Main"
-//            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-//            args = [
-//                    '--plugin', 'html:reports/test-report-api.html',
-//                    '--plugin', 'json:reports/test-report-api.json',
-//                    '--plugin', 'pretty',
-//                    '--glue', 'API/stepDef',
-//                    'src/test/resources/API'
-//            ]
-//        }
-//    }
-//}
+tasks.register('api-testing') {
+    dependsOn assemble, testClasses
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--plugin', 'html:reports/test-report-api.html',
+                    '--plugin', 'json:reports/test-report-api.json',
+                    '--plugin', 'pretty',
+                    '--glue', 'API/stepDef',
+                    '--tags', '@api',
+                    'src/test/resources/API'
+            ]
+        }
+    }
+}
