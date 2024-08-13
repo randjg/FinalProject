@@ -32,11 +32,11 @@ jobs:
 
     # execute gradle command for running API test
     - name: Execute API Testing
-      run: ./gradlew api-testing
+      run: ./gradlew apiTest
 
     # execute gradle command for running WEB test
     - name: Execute WEB Testing
-      run: ./gradlew web-testing
+      run: ./gradlew webTest
 
     # upload artifacts
     - name: Upload Test Results
