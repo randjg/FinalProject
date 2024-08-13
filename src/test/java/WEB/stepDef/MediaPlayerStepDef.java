@@ -2,6 +2,7 @@ package WEB.stepDef;
 
 import WEB.pages.CartPage;
 import WEB.pages.HomePage;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.When;
 
 public class MediaPlayerStepDef extends BaseTest{
@@ -16,7 +17,7 @@ public class MediaPlayerStepDef extends BaseTest{
         homePage.clickAboutUsButton();
     }
 
-    @When("user click play button")
+    @And("user click play button")
     public void userClickPlayButton() {
         homePage.clickPlayVideo();
     }

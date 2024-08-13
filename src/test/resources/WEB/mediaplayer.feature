@@ -10,4 +10,4 @@
       When user click log in button
       Then user should see logout button
       When user click about us button
-      When user click play button
+      And user click play button
