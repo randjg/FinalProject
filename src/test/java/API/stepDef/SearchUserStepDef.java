@@ -2,6 +2,7 @@ package API.stepDef;
 
 import API.pages.ApiPage;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
@@ -23,6 +24,11 @@ public class SearchUserStepDef {
     @When("user send a GET request to the endpoint with the user data")
     public void userSendAGETRequestToTheEndpointWithTheUserData() {
         response = apiPage.getUserById(userID);
+    }
+
+    @Then("the GET response status code should be {int}")
+    public void theGetResponseStatusCodeShouldBe(int expectedStatusCode) {
+        assertEquals(expectedStatusCode, response.getStatusCode());
     }
 
     @And("the response should contain the correct user details")

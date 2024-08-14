@@ -35,8 +35,8 @@ public class CreateNewUserStepDef {
         System.out.println(response.getBody().asString());
     }
 
-    @Then("the response status code should be {int}")
-    public void theResponseStatusCodeShouldBe(int expectedStatusCode) {
+    @Then("the POST response status code should be {int}")
+    public void thePostResponseStatusCodeShouldBe(int expectedStatusCode) {
         assertEquals(expectedStatusCode, response.getStatusCode());
     }
 
