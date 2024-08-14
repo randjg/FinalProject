@@ -97,4 +97,7 @@ public class ApiPage {
         assertTrue("All users should have status: " + expectedStatus, statuses.stream().allMatch(status -> status.equals(expectedStatus)));
     }
 
+    public void validateStatusCode(Response response, int expectedStatusCode){
+        assertEquals(expectedStatusCode, response.statusCode());
+    }
 }

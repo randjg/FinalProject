@@ -23,7 +23,7 @@ public class ListAllUsersStepDef {
 
     @Then("the response status code should be {int}")
     public void theResponseStatusCodeShouldBe(int expectedStatusCode) {
-        assertEquals(expectedStatusCode, response.getStatusCode());
+        apiPage.validateStatusCode(response, expectedStatusCode);
     }
 
     @And("the response should contain a list of users")

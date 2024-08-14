@@ -28,7 +28,7 @@ public class SearchUserStepDef {
 
     @Then("the GET response status code should be {int}")
     public void theGetResponseStatusCodeShouldBe(int expectedStatusCode) {
-        assertEquals(expectedStatusCode, response.getStatusCode());
+        apiPage.validateStatusCode(response, expectedStatusCode);
     }
 
     @And("the response should contain the correct user details")

@@ -36,7 +36,7 @@ public class CreateNewUserStepDef {
 
     @Then("the POST response status code should be {int}")
     public void thePostResponseStatusCodeShouldBe(int expectedStatusCode) {
-        assertEquals(expectedStatusCode, response.getStatusCode());
+        apiPage.validateStatusCode(response, expectedStatusCode);
     }
 
     @And("the user should be created successfully")
