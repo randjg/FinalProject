@@ -28,9 +28,7 @@ a. API Testing
     
   	1. Get List Data: Valid request to retrieve a list of data.
   	2. Get List Data with Filter by Status: Retrieve a list of all users with status “active”.
-  	3. Find a User with Specific ID:
-       • Searched user found.
-       • Searched user not found.
+  	3. Find a User with Specific ID: Retrieve a details of user with specific ID.
   	4. Create New User:
        • Successfully created a new user.
        • Unsuccessful create a new user.
@@ -60,9 +58,11 @@ b. Web Testing
 The test report is generated from the artifact produced by running the main.yml file on GitHub Actions. The screenshots below demonstrate the successful execution of all test scenarios:
 
 Screenshot 1 (API Testing Report): 
--
+<img width="1196" alt="Screenshot 2024-08-14 at 00 17 56" src="https://github.com/user-attachments/assets/995c1a05-3544-4cb3-a46a-330e9ca2ff03">
+
 Screenshot 2 (Web Testing Report):  
--
+<img width="1196" alt="Screenshot 2024-08-14 at 00 18 05" src="https://github.com/user-attachments/assets/cf1b0270-047c-4569-9206-c55a34a3788c">
+
 
 ## **Summary** ##
 All tests for API and Web scenarios have passed successfully, as evidenced by the test report artifacts. This confirms that the testing configurations and execution were performed correctly.
