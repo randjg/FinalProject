@@ -2,13 +2,13 @@ package API.stepDef;
 
 import API.pages.ApiPage;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.response.Response;
 
 import java.util.List;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class ListAllUsersStepDef {
 
@@ -19,6 +19,11 @@ public class ListAllUsersStepDef {
     @When("user send a GET request to list all users")
     public void userSendAGETRequestToListAllUsers() {
         response = apiPage.getAllUsers();
+    }
+
+    @Then("the response status code should be {int}")
+    public void theResponseStatusCodeShouldBe(int expectedStatusCode) {
+        assertEquals(expectedStatusCode, response.getStatusCode());
     }
 
     @And("the response should contain a list of users")
@@ -40,4 +45,6 @@ public class ListAllUsersStepDef {
     public void theResponseShouldOnlyContainUsersWithStatus(String expectedStatus) {
         apiPage.validateUsersHaveStatus(response, expectedStatus);
     }
+
+
 }

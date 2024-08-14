@@ -32,7 +32,6 @@ public class CreateNewUserStepDef {
     @When("user send a POST request to the endpoint with the user data")
     public void userSendAPostRequestToTheEndpointWithTheUserData() {
         response = apiPage.createUser(user);
-        System.out.println(response.getBody().asString());
     }
 
     @Then("the POST response status code should be {int}")
