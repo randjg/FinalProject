@@ -28,9 +28,7 @@ a. API Testing
     
   	1. Get List Data: Valid request to retrieve a list of data.
   	2. Get List Data with Filter by Status: Retrieve a list of all users with status “active”.
-  	3. Find a User with Specific ID:
-       • Searched user found.
-       • Searched user not found.
+  	3. Find a User with Specific ID: Retrieve a details of user with specific ID.
   	4. Create New User:
        • Successfully created a new user.
        • Unsuccessful create a new user.
